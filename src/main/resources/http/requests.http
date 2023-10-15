@@ -1,0 +1,17 @@
+### Добавление события
+
+POST http://localhost:8080/api/events
+Content-Type: application/json
+
+{
+  "name": "Новое событие",
+  "description": "Описание нового события"
+}
+
+### Получение событий
+
+GET http://localhost:8080/api/events
+
+### Получение одного события
+
+GET http://localhost:8080/api/events/5
