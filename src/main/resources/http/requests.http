@@ -15,3 +15,13 @@ GET http://localhost:8080/api/events
 ### Получение одного события
 
 GET http://localhost:8080/api/events/5
+
+### Регистрация пользователя
+
+POST localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "email": "FrankIrina@gmail.com",
+  "password": "Qwerty008!"
+}
