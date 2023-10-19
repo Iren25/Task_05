@@ -1,11 +1,9 @@
-### Добавление события
-
-POST http://localhost:8080/api/events
+### Добавление площадки
+POST http://localhost:8080/api/areas
 Content-Type: application/json
 
 {
-  "name": "Новое событие",
-  "description": "Описание нового события"
+  "name": "Hall_01"
 }
 
 ### Получение событий
@@ -22,6 +20,20 @@ POST localhost:8080/api/users/register
 Content-Type: application/json
 
 {
-  "email": "FrankIrina@gmail.com",
+  "email": "Frank.irina@gmail.com",
   "password": "Qwerty008!"
 }
+
+### Добавление события на площадку
+
+POST localhost:8080/api/areas/1/events
+Content-Type: application/json
+
+{
+  "name": "Conference",
+  "description": "FrontEnd LevelUp",
+  "dayOfWeek": "FRIDAY",
+  "startTime": "13:00",
+  "finishTime": "16:00"
+}
+
