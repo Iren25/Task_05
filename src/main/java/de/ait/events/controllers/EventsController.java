@@ -3,6 +3,7 @@ package de.ait.events.controllers;
 import de.ait.events.EventsApplication;
 import de.ait.events.dto.EventDto;
 import de.ait.events.dto.NewEventDto;
+import de.ait.events.services.AreasService;
 import de.ait.events.services.EventsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -28,6 +29,7 @@ import java.util.List;
 public class EventsController {
 
     private final EventsService eventsService;
+    private final AreasService areasService;
 
     @Operation(summary = "Creating an event", description = "Available for admin")
     @ApiResponses(@ApiResponse(responseCode = "201",
