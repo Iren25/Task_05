@@ -6,6 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.catalina.LifecycleState;
+
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
@@ -37,5 +42,11 @@ public class UserDto {
                 .email(user.getEmail())
                 .role(user.getRole().toString())
                 .build();
+    }
+
+    public static List<UserDto> from(Set<User> users) {
+        return users.stream()
+                .map(UserDto::from)
+                .collect(Collectors.toList());
     }
 }

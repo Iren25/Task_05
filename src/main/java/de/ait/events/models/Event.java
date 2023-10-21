@@ -13,6 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Entity
+@EqualsAndHashCode(exclude = "area")
 public class Event {
 
     @Id
@@ -35,7 +36,8 @@ public class Event {
     private Set<User> members;
 
     @ManyToOne
-    @JoinColumn(name = "area_id", nullable = false)
+    @JoinColumn(name = "area_id")
+    @ToString.Exclude
     private Area area;
 
 }

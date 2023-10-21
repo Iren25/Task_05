@@ -30,10 +30,54 @@ POST localhost:8080/api/areas/1/events
 Content-Type: application/json
 
 {
+  "name": "Concert",
+  "description": "Bi 2 band",
+  "dayOfWeek": "FRIDAY",
+  "startTime": "19:00",
+  "finishTime": "23:00"
+}
+
+### Добавление существующего события на площадку
+
+POST localhost:8080/api/areas/1/events
+Content-Type: application/json
+
+{
+  "existsEventId": 12
+}
+
+
+### Получение всех событий площадки
+
+GET localhost:8080/api/areas/1/events
+
+### Удаление события из площадки
+
+DELETE localhost:8080/api/areas/1/events/12
+
+### Редактирование мероприятия
+
+PUT localhost:8080/api/areas/1/events/12
+Content-Type: application/json
+
+{
   "name": "Conference",
   "description": "FrontEnd LevelUp",
-  "dayOfWeek": "FRIDAY",
-  "startTime": "13:00",
-  "finishTime": "16:00"
+  "startTime": "12:00",
+  "finishTime": "15:00",
+  "dayOfWeek": "FRIDAY"
 }
+
+### Добавление участника в мероприятие
+
+POST localhost:8080/api/events/13/members
+Content-Type: application/json
+
+{
+  "userId": 1
+}
+
+### Получение всех участников мероприятия
+
+GET localhost:8080/api/events/11/members
 

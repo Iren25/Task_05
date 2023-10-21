@@ -36,15 +36,19 @@ public class EventDto {
     private Long areaId;
 
     public static EventDto from(Event event){
-        return EventDto.builder()
+        EventDto result = EventDto.builder()
                 .id(event.getId())
                 .name(event.getName())
                 .description(event.getDescription())
                 .startTime(event.getStartTime().toString())
                 .finishTime(event.getFinishTime().toString())
                 .dayOfWeek(event.getDayOfWeek().toString())
-                .areaId(event.getArea().getId())
                 .build();
+
+        if(event.getArea() != null){
+            result.setAreaId(event.getArea().getId());
+        }
+        return result;
     }
 
     public static List<EventDto> from(List<Event> events){
@@ -54,10 +58,10 @@ public class EventDto {
                 .collect(Collectors.toList());
     }
 
-   /* public static List<EventDto> from(Set<Event> events) {
+   public static List<EventDto> from(Set<Event> events) {
         return events
                 .stream()
                 .map(EventDto::from)
                 .collect(Collectors.toList());
-    } */
+    }
 }
