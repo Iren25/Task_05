@@ -1,9 +1,6 @@
 package de.ait.events.controllers;
 
-import de.ait.events.dto.AreaDto;
-import de.ait.events.dto.EventDto;
-import de.ait.events.dto.NewAreaDto;
-import de.ait.events.dto.NewEventDto;
+import de.ait.events.dto.*;
 import de.ait.events.services.AreasService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -74,5 +71,25 @@ public class AreasController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(areasService.addEventToArea(areaId, newEvent));
+    }
+
+    @GetMapping("/{area-id}/events")
+    public ResponseEntity<List<EventDto>> getEventsOfArea(@PathVariable("area-id") Long areaId){
+        return ResponseEntity.ok(areasService.getEventsOfArea(areaId));
+    }
+
+    @DeleteMapping("/{area-id}/events/{event-id}")
+    public ResponseEntity<EventDto> deleteEventFromArea(@PathVariable("area-id") Long areaId,
+                                                        @PathVariable("event-id") Long eventId){
+        return ResponseEntity
+                .ok(areasService.deleteEventFromArea(areaId, eventId));
+    }
+
+    @PutMapping("/{area-id}/events/{event-id}")
+    public ResponseEntity<EventDto> updateEventInArea(@PathVariable("area-id") Long areaId,
+                                                      @PathVariable("event-id") Long eventId,
+                                                      @RequestBody UpdateEventDto updateEvent){
+        return ResponseEntity
+                .ok(areasService.updateEventInArea(areaId, eventId, updateEvent));
     }
 }

@@ -1,10 +1,6 @@
 package de.ait.events.services;
 
-import de.ait.events.dto.AreaDto;
-
-import de.ait.events.dto.EventDto;
-import de.ait.events.dto.NewAreaDto;
-import de.ait.events.dto.NewEventDto;
+import de.ait.events.dto.*;
 
 import java.util.List;
 
@@ -17,4 +13,10 @@ public interface AreasService {
 
 
     AreaDto getArea(Long eventId);
+
+    List<EventDto> getEventsOfArea(Long areaId);
+
+    EventDto deleteEventFromArea(Long areaId, Long eventId);
+
+    EventDto updateEventInArea(Long areaId, Long eventId, UpdateEventDto updateEvent);
 }

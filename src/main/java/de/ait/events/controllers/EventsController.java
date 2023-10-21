@@ -2,7 +2,9 @@ package de.ait.events.controllers;
 
 import de.ait.events.EventsApplication;
 import de.ait.events.dto.EventDto;
+import de.ait.events.dto.MemberToEventDto;
 import de.ait.events.dto.NewEventDto;
+import de.ait.events.dto.UserDto;
 import de.ait.events.services.AreasService;
 import de.ait.events.services.EventsService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -67,6 +69,18 @@ public class EventsController {
                                                  @PathVariable("event-id") Long eventId){
         return ResponseEntity
                 .ok(eventsService.getEvent(eventId));
+    }
+
+    @PostMapping("/{event-id}/members")
+    public ResponseEntity<List<UserDto>> addMemberToEvent(@PathVariable("event-id") Long eventId,
+                                                          @RequestBody MemberToEventDto memberData) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(eventsService.addMemberToEvent(eventId, memberData));
+    }
+
+    @GetMapping("/{event-id}/members")
+    public ResponseEntity<List<UserDto>> getMembersOfEvent(@PathVariable("event-id") Long eventId){
+        return ResponseEntity.ok(eventsService.getMembersOfEvent(eventId));
     }
 
 }

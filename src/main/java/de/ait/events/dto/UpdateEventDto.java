@@ -1,5 +1,4 @@
 package de.ait.events.dto;
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
@@ -7,11 +6,9 @@ import javax.validation.constraints.*;
 
 
 @Data
-@Schema(name = "New Event")
-public class NewEventDto {
+@Schema(description = "Fields for update, null-value saves in base")
+public class UpdateEventDto {
 
-    @Schema(description = "Идентификатор существующего события, если задано - остальные поля уже существуют")
-    private Long existsEventId;
 
     @Schema(description = "Name of event", example = "Concert")
     @NotNull
@@ -27,14 +24,19 @@ public class NewEventDto {
 
     @Schema(description = "start time", example = "09:00")
     @Pattern(regexp = "^([01]\\d|2[0-3]):([0-5]\\d)$")
+    @NotBlank
+    @NotEmpty
     private String startTime;
 
     @Schema(description = "finish time", example = "12:00")
     @Pattern(regexp = "^([01]\\d|2[0-3]):([0-5]\\d)$")
+    @NotBlank
+    @NotEmpty
     private String finishTime;
 
     @Schema(description = "day of week", example = "MONDAY")
-    //@Pattern(regexp = "^(MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY|SATURDAY|SUNDAY)$")
+    @NotBlank
+    @NotEmpty
     private String dayOfWeek;
 
 }
